@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="title desc">
+<!-- 本项目原创研究示意图：不按比例，不是历史原始平面图。修改几何元素可调整空间关系。 -->
+<title id="title">frankfurt interpretive spatial diagram</title><desc id="desc">Original schematic for the Where Home Happens research interface. Not a surveyed plan.</desc>
+<style>.floor{fill:#ffdac9;fill-opacity:.08}.wash{fill:#ffdac9;fill-opacity:.3}.wall{fill:none;stroke:#ffdac9;stroke-width:5;stroke-linecap:square;stroke-linejoin:miter}.fine{fill:none;stroke:#ffdac9;stroke-width:1.2}.dash{fill:none;stroke:#ffdac9;stroke-width:1;stroke-dasharray:4 4}.dimension{fill:none;stroke:#020402;stroke-width:.8}.furniture{fill:#747861;stroke:#ffdac9;stroke-width:1.4}.post{fill:#ffdac9}text{fill:#020402;font:8px 'Courier New',monospace;letter-spacing:.8px}</style>
+
+<path class="floor" d="M92 14H271V219H92Z"/><path class="wall" d="M92 14H271V219H205 M147 219H92V14"/>
+<path class="wash" d="M108 31H254V77H231V194H201V63H138V194H108Z"/>
+<path class="fine" d="M108 31H254V77H231V194H201V63H138V194H108Z"/>
+<rect class="fine" x="146" y="35" width="48" height="21"/><circle class="fine" cx="169" cy="46" r="3"/>
+<path class="fine" d="M108 89H138 M108 115H138 M108 141H138 M108 167H138 M201 107H231 M201 133H231 M201 159H231"/>
+<circle class="fine" cx="215" cy="87" r="7"/><circle class="fine" cx="215" cy="108" r="7"/>
+<circle class="furniture" cx="170" cy="149" r="13"/><path class="fine" d="M147 219V163A56 56 0 0 1 203 219"/>
+<path class="dash" d="M169 194V78"/><text x="24" y="126" transform="rotate(-90 24 126)">ORGANIZING WORK</text></svg>

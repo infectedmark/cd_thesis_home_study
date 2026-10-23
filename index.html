@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+  WHERE HOME HAPPENS / 家在哪里发生
+  本项目采用原生 HTML + CSS + JavaScript，无构建步骤、无第三方依赖。
+  index.html：语义结构与可访问性；styles.css：视觉系统；script.js：数据与交互。
+  在 VS Code 中用 Live Server 打开本文件。直接双击也可运行核心功能。
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#747861">
+  <meta name="description" content="An interactive atlas of domestic spaces: entering, gathering, and feeding.">
+  <title>Where Home Happens — A Domestic Atlas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- defer：等 HTML 解析完毕后执行，确保脚本能找到页面元素。 -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to archive / 跳到档案</a>
+  <div class="app-shell" id="app">
+    <!-- 顶部固定导航；真实 button 支持鼠标、触摸与键盘。 -->
+    <header class="masthead">
+      <button class="wordmark" id="home-button" aria-label="Reset archive / 返回初始视图">WHH<span>®</span></button>
+      <span class="masthead-subtitle" data-i18n="masthead">STUDY OF DOMESTIC LIFE</span>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-button active" data-view="atlas" aria-pressed="true" data-i18n="atlas">ATLAS</button>
+        <button class="nav-button" data-view="index" aria-pressed="false" data-i18n="index">INDEX</button>
+        <button class="nav-button" id="editorial-button" data-i18n="editorial">EDITORIAL ↗</button>
+      </nav>
+      <button class="language-button" id="language-button" aria-label="Switch language / 切换语言">中文</button>
+    </header>
+
+    <main id="main">
+      <!-- 筛选区始终保留，便于从任意视图切换研究章节。 -->
+      <div class="archive-toolbar">
+        <div class="filters" role="group" aria-label="Filter chapters / 筛选章节">
+          <button class="filter active" data-filter="all" aria-pressed="true"><span data-i18n="all">ALL SPACES</span><sup>06</sup></button>
+          <button class="filter" data-filter="entering" aria-pressed="false"><span class="filter-number">01</span><span data-i18n="entering">ENTERING</span></button>
+          <button class="filter" data-filter="gathering" aria-pressed="false"><span class="filter-number">02</span><span data-i18n="gathering">GATHERING</span></button>
+          <button class="filter" data-filter="feeding" aria-pressed="false"><span class="filter-number">03</span><span data-i18n="feeding">FEEDING</span></button>
+        </div>
+        <span id="result-count" class="micro">06 / 06</span>
+      </div>
+
+      <!--
+        桌面版为可拖动的空间画布。画布内部坐标由 JS 数据的 x / y 控制。
+        手机宽度下，CSS 会切换为正常文档流，避免强迫用户操作微小平面图。
+      -->
+      <section class="viewport" id="viewport" aria-label="Domestic space archive / 家居空间档案">
+        <div class="artboard" id="artboard">
+          <div class="atlas-intro">
+            <p class="micro" data-i18n="edition">FIELD NOTES ON BELONGING / VOL. 01</p>
+            <h1>Where home<br><span>happens.</span></h1>
+            <p class="intro-copy" data-i18n="intro">Six spaces. Three everyday acts.<br>A home is made in the ways we live.</p>
+            <span class="intro-rule" aria-hidden="true"></span>
+          </div>
+          <!-- 六张档案由 script.js 插入，避免复制粘贴六套结构。 -->
+          <div id="case-collection"></div>
+          <span class="artboard-note micro" data-i18n="diagramNote">NOT TO SCALE</span>
+        </div>
+        <span class="edge-note micro" aria-hidden="true">A HOUSE IS A STRUCTURE. A HOME IS A PRACTICE.</span>
+      </section>
+
+      <div class="viewport-controls" id="viewport-controls">
+        <span class="micro" data-i18n="dragHint">DRAG TO WANDER · SELECT TO READ</span>
+        <div class="zoom-group">
+          <label for="zoom" class="micro" data-i18n="scale">SCALE</label>
+          <input id="zoom" type="range" min="75" max="190" value="100" step="1" aria-label="Archive zoom / 档案缩放">
+          <output id="zoom-value" for="zoom" class="micro">100%</output>
+          <button id="fit-button" class="text-button" data-i18n="reset">RESET ↺</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="colophon">
+      <span class="footer-title">WHERE HOME HAPPENS</span>
+      <button class="text-button" id="sources-button" data-i18n="sources">SOURCES & NOTES ↗</button>
+    </footer>
+  </div>
+
+  <!-- 比较托盘在至少选中一项时出现。aria-live 提示由独立 status 负责。 -->
+  <aside class="compare-dock" id="compare-dock" aria-label="Selected cases / 已选案例" hidden>
+    <div id="selected-cases"></div>
+    <button id="compare-button" class="solid-button" disabled data-i18n="compareTwo">COMPARE TWO ↗</button>
+    <button id="clear-selection" class="text-button" data-i18n="clear">CLEAR</button>
+  </aside>
+
+  <!--
+    使用原生 dialog：自带模态焦点限制与 Escape 关闭；不需要额外弹窗库。
+    详情、比较、关于各用独立 dialog，内容通过受信任的本地数据生成。
+  -->
+  <dialog id="reader-dialog" class="reader-dialog" aria-labelledby="reader-title">
+    <div id="reader-content"></div>
+  </dialog>
+  <dialog id="compare-dialog" class="compare-dialog" aria-labelledby="compare-title">
+    <div id="compare-content"></div>
+  </dialog>
+  <dialog id="editorial-dialog" class="editorial-dialog" aria-labelledby="editorial-title">
+    <div class="dialog-bar"><span class="micro">WHH / EDITORIAL</span><button class="close-button" data-close="editorial-dialog" aria-label="Close / 关闭">×</button></div>
+    <div id="editorial-content"></div>
+  </dialog>
+
+  <!-- 无视觉打扰的读屏提示，以及可见的操作反馈。 -->
+  <p id="status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <noscript><p class="noscript-note">Please enable JavaScript to explore the archive. 请启用 JavaScript 浏览互动档案。</p></noscript>
+</body>
+</html>

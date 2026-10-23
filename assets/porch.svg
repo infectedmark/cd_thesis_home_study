@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="title desc">
+<!-- 本项目原创研究示意图：不按比例，不是历史原始平面图。修改几何元素可调整空间关系。 -->
+<title id="title">porch interpretive spatial diagram</title><desc id="desc">Original schematic for the Where Home Happens research interface. Not a surveyed plan.</desc>
+<style>.floor{fill:#ffdac9;fill-opacity:.08}.wash{fill:#ffdac9;fill-opacity:.3}.wall{fill:none;stroke:#ffdac9;stroke-width:5;stroke-linecap:square;stroke-linejoin:miter}.fine{fill:none;stroke:#ffdac9;stroke-width:1.2}.dash{fill:none;stroke:#ffdac9;stroke-width:1;stroke-dasharray:4 4}.dimension{fill:none;stroke:#020402;stroke-width:.8}.furniture{fill:#747861;stroke:#ffdac9;stroke-width:1.4}.post{fill:#ffdac9}text{fill:#020402;font:8px 'Courier New',monospace;letter-spacing:.8px}</style>
+
+<path class="floor" d="M32 31H323V136H32Z"/><path class="wash" d="M32 136H323V203H32Z"/>
+<path class="wall" d="M32 136V31H323V136 M32 136H149 M211 136H323"/>
+<path class="fine" d="M149 136V77A59 59 0 0 1 208 136 M32 203H323 M32 150V203 M323 150V203"/>
+<path class="fine" d="M48 146V195 M61 146V195 M74 146V195 M87 146V195 M100 146V195 M113 146V195 M126 146V195 M139 146V195 M152 146V195 M165 146V195 M178 146V195 M191 146V195 M204 146V195 M217 146V195 M230 146V195 M243 146V195 M256 146V195 M269 146V195 M282 146V195 M295 146V195 M308 146V195"/>
+<rect class="furniture" x="67" y="154" width="36" height="32" rx="3"/><rect class="furniture" x="250" y="154" width="36" height="32" rx="3"/><circle class="furniture" cx="179" cy="170" r="15"/>
+<circle class="post" cx="35" cy="199" r="4"/><circle class="post" cx="320" cy="199" r="4"/>
+<text x="54" y="61">HOME</text><text x="144" y="224">NEIGHBORHOOD</text>
+<path class="dash" d="M179 200V233"/></svg>

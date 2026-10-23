@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="title desc">
+<!-- 本项目原创研究示意图：不按比例，不是历史原始平面图。修改几何元素可调整空间关系。 -->
+<title id="title">majlis interpretive spatial diagram</title><desc id="desc">Original schematic for the Where Home Happens research interface. Not a surveyed plan.</desc>
+<style>.floor{fill:#ffdac9;fill-opacity:.08}.wash{fill:#ffdac9;fill-opacity:.3}.wall{fill:none;stroke:#ffdac9;stroke-width:5;stroke-linecap:square;stroke-linejoin:miter}.fine{fill:none;stroke:#ffdac9;stroke-width:1.2}.dash{fill:none;stroke:#ffdac9;stroke-width:1;stroke-dasharray:4 4}.dimension{fill:none;stroke:#020402;stroke-width:.8}.furniture{fill:#747861;stroke:#ffdac9;stroke-width:1.4}.post{fill:#ffdac9}text{fill:#020402;font:8px 'Courier New',monospace;letter-spacing:.8px}</style>
+
+<path class="floor" d="M26 25H332V207H26Z"/><path class="wall" d="M26 25H332V207H249 M185 207H26V25"/>
+<path class="wash" d="M42 43H316V71H42Z M42 74H70V188H42Z M288 74H316V188H288Z"/>
+<path class="fine" d="M42 43H316V71H42Z M42 74H70V188H42Z M288 74H316V188H288Z"/>
+<path class="fine" d="M82 43V71 M122 43V71 M162 43V71 M202 43V71 M242 43V71 M282 43V71 M42 111H70 M42 149H70 M288 111H316 M288 149H316"/>
+<rect class="fine" x="108" y="97" width="143" height="84"/><rect class="fine" x="114" y="103" width="131" height="72"/>
+<circle class="fine" cx="179" cy="139" r="17"/><circle class="post" cx="174" cy="139" r="3"/><circle class="fine" cx="185" cy="139" r="4"/>
+<path class="fine" d="M185 207V146A61 61 0 0 1 246 207"/>
+<text x="113" y="228">HOSTING / TRANSMITTING</text></svg>

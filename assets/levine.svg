@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="title desc">
+<!-- 本项目原创研究示意图：不按比例，不是历史原始平面图。修改几何元素可调整空间关系。 -->
+<title id="title">levine interpretive spatial diagram</title><desc id="desc">Original schematic for the Where Home Happens research interface. Not a surveyed plan.</desc>
+<style>.floor{fill:#ffdac9;fill-opacity:.08}.wash{fill:#ffdac9;fill-opacity:.3}.wall{fill:none;stroke:#ffdac9;stroke-width:5;stroke-linecap:square;stroke-linejoin:miter}.fine{fill:none;stroke:#ffdac9;stroke-width:1.2}.dash{fill:none;stroke:#ffdac9;stroke-width:1;stroke-dasharray:4 4}.dimension{fill:none;stroke:#020402;stroke-width:.8}.furniture{fill:#747861;stroke:#ffdac9;stroke-width:1.4}.post{fill:#ffdac9}text{fill:#020402;font:8px 'Courier New',monospace;letter-spacing:.8px}</style>
+
+<path class="floor" d="M18 41H340V194H18Z"/><path class="wall" d="M18 41H340V194H18V41 M128 41V111 M128 162V194 M244 41V115 M244 163V194"/>
+<path class="fine" d="M128 111H176A48 48 0 0 1 128 159 M244 115H290A46 46 0 0 1 244 161"/>
+<rect class="wash" x="32" y="55" width="78" height="36"/><rect class="fine" x="32" y="55" width="78" height="36"/>
+<path class="fine" d="M32 67H110 M45 55V91"/><rect class="fine" x="38" y="127" width="58" height="39"/>
+<rect class="wash" x="146" y="59" width="73" height="24"/><rect class="fine" x="146" y="59" width="73" height="24"/>
+<circle class="fine" cx="157" cy="71" r="6"/><circle class="fine" cx="173" cy="71" r="6"/>
+<rect class="fine" x="155" y="123" width="60" height="36"/><circle class="fine" cx="148" cy="140" r="6"/><circle class="fine" cx="224" cy="140" r="6"/>
+<rect class="fine" x="263" y="62" width="57" height="34"/><path class="fine" d="M272 72H301V85H272Z M285 67V90"/>
+<rect class="fine" x="263" y="133" width="57" height="34"/><path class="fine" d="M272 143H301V156H272Z M285 138V161"/>
+<path class="dash" d="M102 179H312"/><text x="27" y="223">CARE</text><text x="152" y="223">COOKING</text><text x="265" y="223">PAID WORK</text></svg>

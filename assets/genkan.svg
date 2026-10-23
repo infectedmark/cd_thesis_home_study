@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="title desc">
+<!-- 本项目原创研究示意图：不按比例，不是历史原始平面图。修改几何元素可调整空间关系。 -->
+<title id="title">genkan interpretive spatial diagram</title><desc id="desc">Original schematic for the Where Home Happens research interface. Not a surveyed plan.</desc>
+<style>.floor{fill:#ffdac9;fill-opacity:.08}.wash{fill:#ffdac9;fill-opacity:.3}.wall{fill:none;stroke:#ffdac9;stroke-width:5;stroke-linecap:square;stroke-linejoin:miter}.fine{fill:none;stroke:#ffdac9;stroke-width:1.2}.dash{fill:none;stroke:#ffdac9;stroke-width:1;stroke-dasharray:4 4}.dimension{fill:none;stroke:#020402;stroke-width:.8}.furniture{fill:#747861;stroke:#ffdac9;stroke-width:1.4}.post{fill:#ffdac9}text{fill:#020402;font:8px 'Courier New',monospace;letter-spacing:.8px}</style>
+
+<path class="floor" d="M38 29H288V193H38Z"/><path class="wash" d="M40 128H286V191H40Z"/>
+<path class="wall" d="M38 29H288V193H205 M119 193H38V29 M38 128H288"/>
+<path class="fine" d="M119 193V128A65 65 0 0 1 184 193"/>
+<path class="fine" d="M215 40V112H278V40Z M231 40V112 M246 40V112 M261 40V112"/>
+<path class="fine" d="M57 146q9-18 15 0v21H57Z M80 146q9-18 15 0v21H80Z"/>
+<path class="dash" d="M158 227V155 M158 117V76"/><path class="fine" d="M153 82l5-9 5 9"/>
+<text x="55" y="61">INTERIOR</text><text x="208" y="160">THRESHOLD</text>
+<path class="dimension" d="M311 29V193M306 29h10M306 193h10"/><text x="322" y="105" transform="rotate(90 322 105)">ENTERING</text></svg>
