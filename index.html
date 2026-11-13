@@ -1,216 +1,60 @@
 <!doctype html>
+<!--
+  WHERE HOME HAPPENS / 家在哪里发生
+  本项目采用原生 HTML + CSS + JavaScript，无构建步骤、无第三方依赖。
+  index.html：语义结构与可访问性；styles.css：视觉系统；script.js：数据与交互。
+  在 VS Code 中用 Live Server 打开本文件。直接双击也可运行核心功能。
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#747861">
+  <meta name="theme-color" content="#000000">
   <meta name="description" content="An interactive atlas of domestic spaces: entering, gathering, and feeding.">
   <title>Where Home Happens</title>
-
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <!-- defer：等 HTML 解析完毕后执行，确保脚本能找到页面元素。 -->
   <script src="script.js" defer></script>
 </head>
-
 <body>
-  <!-- 开场动画：没有 JavaScript 时不会遮挡正文。 -->
-  <section
-    id="landing"
-    class="landing"
-    aria-label="Where Home Happens introduction"
-    hidden
-  >
-    <p class="landing-title" aria-label="WHERE HOME HAPPENS">
-      WHERE HOME HAPPENS
-    </p>
-    <button class="landing-skip" type="button">
-      SKIP INTRO / 跳过开场 ↗
-    </button>
+  <!-- 首次进入当前标签页时播放；无 JavaScript 时不遮挡正文。 -->
+  <section id="landing" class="landing" aria-label="Where Home Happens introduction" hidden>
+    <p class="landing-title" aria-label="WHERE HOME HAPPENS">WHERE HOME HAPPENS</p>
+    <button class="landing-skip" type="button">SKIP INTRO / 跳过开场 ↗</button>
   </section>
-
   <a class="skip-link" href="#main">Skip to archive</a>
-
   <div class="app-shell" id="app">
+    <div class="study-screen" id="study-screen">
+    <!-- 顶部固定导航；真实 button 支持鼠标、触摸与键盘。 -->
     <header class="masthead">
-      <button
-        class="wordmark"
-        id="home-button"
-        aria-label="Reset archive"
-      >
-        WHH<span>®</span>
-      </button>
-
-      <span class="masthead-subtitle" data-i18n="masthead">
-        STUDY OF DOMESTIC LIFE
-      </span>
+      <button class="wordmark" id="home-button" aria-label="Reset archive / 返回初始视图">WHH<span>®</span></button>
+      <span class="masthead-subtitle" data-i18n="masthead">STUDY OF DOMESTIC LIFE</span>
+      <button class="layout-toggle" id="layout-toggle" type="button" aria-pressed="false" aria-controls="viewport" aria-label="Switch to static grid view"><span class="layout-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span id="layout-label">GRID VIEW</span></button>
     </header>
 
     <main id="main">
-      <div class="archive-toolbar">
-        <div
-          class="filters"
-          role="group"
-          aria-label="Filter chapters"
-        >
-          <button
-            class="filter active"
-            data-filter="all"
-            aria-pressed="true"
-          >
-            <span data-i18n="all">ALL SPACES</span><sup>06</sup>
-          </button>
-
-          <button
-            class="filter"
-            data-filter="entering"
-            aria-pressed="false"
-          >
-            <span class="filter-number">01</span>
-            <span data-i18n="entering">ENTERING</span>
-          </button>
-
-          <button
-            class="filter"
-            data-filter="gathering"
-            aria-pressed="false"
-          >
-            <span class="filter-number">02</span>
-            <span data-i18n="gathering">GATHERING</span>
-          </button>
-
-          <button
-            class="filter"
-            data-filter="feeding"
-            aria-pressed="false"
-          >
-            <span class="filter-number">03</span>
-            <span data-i18n="feeding">FEEDING</span>
-          </button>
-        </div>
-
-        <span id="result-count" class="micro">06 / 06</span>
+      <div class="atlas-intro">
+        <h1><span class="headline-default">Where home <em>happens.</em></span><span class="headline-case" id="active-case-title" aria-hidden="true"></span></h1>
       </div>
-
-      <section
-        class="viewport"
-        id="viewport"
-        aria-label="Domestic space archive"
-      >
-        <div class="artboard" id="artboard">
-          <div class="atlas-intro">
-            <h1>Where home<br><span>happens.</span></h1>
-            <span class="intro-rule" aria-hidden="true"></span>
-          </div>
-
-          <!-- 六个案例由 script.js 生成。 -->
-          <div id="case-collection"></div>
-
-          <span
-            class="artboard-note micro"
-            data-i18n="diagramNote"
-          >
-            NOT TO SCALE
-          </span>
-        </div>
-
-        <span class="edge-note micro" aria-hidden="true">
-          A HOUSE IS A STRUCTURE. A HOME IS A PRACTICE.
-        </span>
+      <section class="viewport" id="viewport" aria-label="Domestic space archive — scrolling case studies" tabindex="0" aria-describedby="scroll-help">
+        <div id="case-collection"></div>
       </section>
-
-      <div class="viewport-controls" id="viewport-controls">
-        <span class="micro" data-i18n="dragHint">
-          DRAG TO WANDER · SELECT TO READ
-        </span>
-
-        <div class="zoom-group">
-          <label for="zoom" class="micro" data-i18n="scale">
-            SCALE
-          </label>
-
-          <input
-            id="zoom"
-            type="range"
-            min="75"
-            max="190"
-            value="100"
-            step="1"
-            aria-label="Archive zoom"
-          >
-
-          <output
-            id="zoom-value"
-            for="zoom"
-            class="micro"
-          >
-            100%
-          </output>
-
-          <button
-            id="fit-button"
-            class="text-button"
-            data-i18n="reset"
-          >
-            RESET ↺
-          </button>
-        </div>
-      </div>
+      <section class="floorplan-preview" id="floorplan-preview" aria-labelledby="active-case-title" hidden>
+        <aside class="reading-copy reading-left" tabindex="0" aria-label="Source account"><div id="source-account"></div></aside>
+        <figure class="reading-plan"><img alt="" draggable="false"><figcaption>ORIGINAL INTERPRETIVE DIAGRAM · NOT TO SCALE</figcaption></figure>
+        <aside class="reading-copy reading-right" tabindex="0" aria-label="Interpretation and research context"><button class="photo-open text-button" id="view-photos">PHOTOGRAPHS ↓</button><button class="reading-close text-button" id="close-reading">BACK TO SPACES ×</button><div id="source-context"></div><nav class="reading-nav" aria-label="Browse case studies"><button class="text-button" data-browse="-1">← PREVIOUS</button><button class="text-button" data-browse="1">NEXT →</button></nav></aside>
+      </section>
     </main>
-
-    <footer class="colophon">
-      <span class="footer-title">WHERE HOME HAPPENS</span>
-
-      <button
-        class="text-button"
-        id="sources-button"
-        data-i18n="sources"
-      >
-        SOURCES & NOTES ↗
-      </button>
-    </footer>
+    </div>
+    <section class="photo-screen" id="photo-section" aria-labelledby="photo-title" hidden>
+      <header class="photo-essay-header"><div><p class="micro" id="photo-case-number">A PHOTOGRAPHIC STUDY</p><h2 id="photo-title" tabindex="-1">Photographs</h2></div><button class="text-button" id="back-to-study">↑ BACK TO THE STUDY</button></header>
+      <div class="photo-essay-grid" id="photo-essay-grid"></div>
+    </section>
   </div>
 
-  <dialog
-    id="reader-dialog"
-    class="reader-dialog"
-    aria-labelledby="reader-title"
-  >
-    <div id="reader-content"></div>
-  </dialog>
 
-  <dialog
-    id="editorial-dialog"
-    class="editorial-dialog"
-    aria-labelledby="editorial-title"
-  >
-    <div class="dialog-bar">
-      <span class="micro">WHH / SOURCES & NOTES</span>
-
-      <button
-        class="close-button"
-        data-close="editorial-dialog"
-        aria-label="Close"
-      >
-        ×
-      </button>
-    </div>
-
-    <div id="editorial-content"></div>
-  </dialog>
-
-  <p
-    id="status"
-    class="sr-only"
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-  ></p>
-
-  <noscript>
-    <p class="noscript-note">
-      Please enable JavaScript to explore the archive.
-      请启用 JavaScript 浏览互动档案。
-    </p>
-  </noscript>
+  <p id="scroll-help" class="sr-only">Six case studies scroll automatically. Use the layout button in the top-right corner to see all six in a static grid. Hover over a floorplan or focus a case to pause, show its name, and enlarge the drawing. The source account, interpretation, and research links appear beside the drawing. On touch screens, tap a case to read. Scroll down to view photographs, then scroll up to return to the study. Press Escape or use Back to spaces to return to the scrolling archive.</p>
+  <noscript><p class="noscript-note">Please enable JavaScript to explore the archive. 请启用 JavaScript 浏览互动档案。</p></noscript>
 </body>
 </html>
